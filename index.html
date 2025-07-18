@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe - Politique de Confidentialité & Conditions d'Utilisation</title>
+    <style>
+        /* Variables CSS basées sur votre design system */
+        :root {
+            --primary: #FF7A59;
+            --secondary: #A8D8B9;
+            --accent: #F6E05E;
+            --background: #FAF7F0;
+            --surface: #FFFFFF;
+            --text-primary: #374151;
+            --text-secondary: #9CA3AF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --info: #3B82F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            margin: -20px -20px 40px -20px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .language-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-toggle button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 0 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+        }
+
+        .language-toggle button.inactive {
+            background: var(--text-secondary);
+        }
+
+        .tab-navigation {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: var(--surface);
+            padding: 8px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-button {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(255, 122, 89, 0.3);
+        }
+
+        .content-section {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 25px;
+            color: var(--secondary);
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--info), var(--primary));
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .feature-box {
+            background: rgba(168, 216, 185, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--text-primary);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(151, 151, 151, 0.2);
+            margin-top: 40px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .tab-navigation {
+                flex-direction: column;
+            }
+
+            .language-toggle button {
+                display: block;
+                margin: 5px auto;
+                width: 200px;
+            }
+        }
+
+        /* Animation d'apparition */
+        .content-section {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌍 Vibe</h1>
+            <p>Connectez-vous avec des voyageurs solo du monde entier</p>
+        </div>
+
+        <div class="language-toggle">
+            <button onclick="setLanguage('fr')" id="lang-fr">🇫🇷 Français</button>
+            <button onclick="setLanguage('en')" id="lang-en" class="inactive">🇬🇧 English</button>
+        </div>
+
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab('privacy')">
+                <span class="emoji">🔒</span>Politique de Confidentialité
+            </button>
+            <button class="tab-button" onclick="showTab('terms')">
+                <span class="emoji">📋</span>Conditions d'Utilisation
+            </button>
+        </div>
+
+        <!-- Section Politique de Confidentialité FR -->
+        <div id="privacy-fr" class="content-section active">
+            <h1>🔒 Politique de Confidentialité - Vibe</h1>
+            <p><strong>Dernière mise à jour :</strong> Janvier 2025</p>
+
+            <div class="highlight-box">
+                <h3><span class="emoji">🌍</span>À propos de Vibe</h3>
+                <p>Vibe est une application mobile développée par <strong>mcsEdition</strong> qui connecte les voyageurs solo du monde entier. Notre mission est de créer des connexions authentiques entre personnes partageant la même passion pour les voyages et l'aventure.</p>
+            </div>
+
+            <h2>📱 Informations que nous collectons</h2>
+            
+            <h3>Informations de profil</h3>
+            <ul>
+                <li><strong>Prénom</strong> que vous fournissez lors de l'inscription</li>
+                <li><strong>Date de naissance</strong> pour vérifier l'âge légal et créer des connexions pertinentes</li>
+                <li><strong>Genre</strong> pour personnaliser votre expérience</li>
+                <li><strong>Photos de profil</strong> que vous choisissez de partager</li>
+                <li><strong>Préférences de voyage</strong> et centres d'intérêt</li>
+                <li><strong>Traits de personnalité</strong> et style de vie</li>
+            </ul>
+
+            <h3>🌍 Informations de localisation</h3>
+            <div class="feature-box">
+                <ul>
+                    <li><strong>Destination de voyage</strong> que vous définissez lors de la création d'un voyage</li>
+                    <li><strong>Ville actuelle</strong> si vous marquez votre voyage comme "sur place"</li>
+                    <li><strong>Localisation approximative</strong> pour afficher votre position sur la carte (uniquement la ville, jamais l'adresse exacte)</li>
+                </ul>
+            </div>
+
+            <h2>🔒 Stockage et sécurité des données</h2>
+            <div class="success-box">
+                <h3>Sécurité</h3>
+                <ul>
+                    <li><strong>Chiffrement</strong> : Toutes les données sont chiffrées en transit et au repos</li>
+                    <li><strong>Infrastructure sécurisée</strong> : Hébergement sur Supabase avec certification SOC 2</li>
+                    <li><strong>Accès limité</strong> : Seuls les services essentiels ont accès à vos données</li>
+                    <li><strong>Authentification sécurisée</strong> : OAuth avec Google et Facebook</li>
+                </ul>
+            </div>
+
+            <h2>🛠️ Vos droits et contrôles</h2>
+            <div class="feature-box">
+                <h3>Contrôle de confidentialité</h3>
+                <ul>
+                    <li><strong>Visibilité du profil</strong> : Choisissez qui peut voir votre profil</li>
+                    <li><strong>Paramètres de localisation</strong> : Contrôlez l'affichage de votre position</li>
+                    <li><strong>Notifications</strong> : Personnalisez ou désactivez les alertes</li>
+                    <li><strong>Blocage d'utilisateurs</strong> : Bloquez les personnes indésirables</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>❌ Ce que nous ne partageons JAMAIS</h3>
+                <ul>
+                    <li>Adresse exacte ou coordonnées GPS précises</li>
+                    <li>Données personnelles avec des annonceurs</li>
+                    <li>Messages privés avec des tiers</li>
+                    <li>Informations d'identification complètes</li>
+                </ul>
+            </div>
+
+            <div class="contact-card">
+                <h3>📞 Contact et questions</h3>
+                <p>Pour toute question concernant cette politique de confidentialité :</p>
+                <p><strong>Email :</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Développeur :</strong> mcsEdition</p>
+                <p><strong>Localisation :</strong> Montréal, QC, Canada</p>
+            </div>
+        </div>
+
+        <!-- Section Conditions d'Utilisation FR -->
+        <div id="terms-fr" class="content-section">
+            <h1>📋 Conditions d'Utilisation - Vibe</h1>
+            <p><strong>Dernière mise à jour :</strong> Janvier 2025</p>
+
+            <div class="highlight-box">
+                <h3>🎯 Public cible</h3>
+                <p>L'Application est destinée aux utilisateurs âgés de <strong>18 ans et plus</strong>. L'utilisation par des mineurs est strictement interdite.</p>
+            </div>
+
+            <h2>✅ Comportements acceptés</h2>
+            <div class="success-box">
+                <ul>
+                    <li><strong>Respect mutuel</strong> envers tous les utilisateurs</li>
+                    <li><strong>Informations authentiques</strong> dans votre profil</li>
+                    <li><strong>Communication bienveillante</strong> dans les messages</li>
+                    <li><strong>Respect de la vie privée</strong> des autres utilisateurs</li>
+                </ul>
+            </div>
+
+            <h2>❌ Comportements interdits</h2>
+            <div class="warning-box">
+                <ul>
+                    <li>Harcèlement, intimidation ou menaces envers d'autres utilisateurs</li>
+                    <li>Contenu sexuel explicite ou inapproprié</li>
+                    <li>Discrimination basée sur la race, religion, genre, orientation sexuelle</li>
+                    <li>Spam ou sollicitation commerciale non autorisée</li>
+                    <li>Usurpation d'identité ou fausses informations</li>
+                    <li>Partage d'informations personnelles d'autres utilisateurs sans consentement</li>
+                </ul>
+            </div>
+
+            <h2>🛡️ Sécurité et recommandations</h2>
+            <div class="feature-box">
+                <h3>Recommandations de sécurité</h3>
+                <ul>
+                    <li>Rencontrez-vous dans des lieux publics</li>
+                    <li>Informez quelqu'un de vos plans de rencontre</li>
+                    <li>Faites confiance à votre instinct</li>
+                    <li>Signalez tout comportement suspect</li>
+                </ul>
+            </div>
+
+            <div class="contact-card">
+                <h3>📞 Contact</h3>
+                <p>Pour toute question concernant ces Conditions d'Utilisation :</p>
+                <p><strong>Email :</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Développeur :</strong> mcsEdition</p>
+                <p><strong>Localisation :</strong> Montréal, QC, Canada</p>
+            </div>
+        </div>
+
+        <!-- Sections EN (English) -->
+        <div id="privacy-en" class="content-section">
+            <h1>🔒 Privacy Policy - Vibe</h1>
+            <p><strong>Last updated:</strong> January 2025</p>
+
+            <div class="highlight-box">
+                <h3><span class="emoji">🌍</span>About Vibe</h3>
+                <p>Vibe is a mobile application developed by <strong>mcsEdition</strong> that connects solo travelers from around the world. Our mission is to create authentic connections between people who share the same passion for travel and adventure.</p>
+            </div>
+
+            <h2>📱 Information We Collect</h2>
+            
+            <h3>Profile Information</h3>
+            <ul>
+                <li><strong>First name</strong> you provide during registration</li>
+                <li><strong>Date of birth</strong> to verify legal age and create relevant connections</li>
+                <li><strong>Gender</strong> to personalize your experience</li>
+                <li><strong>Profile photos</strong> you choose to share</li>
+                <li><strong>Travel preferences</strong> and interests</li>
+                <li><strong>Personality traits</strong> and lifestyle choices</li>
+            </ul>
+
+            <h3>🌍 Location Information</h3>
+            <div class="feature-box">
+                <ul>
+                    <li><strong>Travel destination</strong> you set when creating a trip</li>
+                    <li><strong>Current city</strong> if you mark your trip as "here now"</li>
+                    <li><strong>Approximate location</strong> to display your position on the map (city only, never exact address)</li>
+                </ul>
+            </div>
+
+            <h2>🔒 Data Storage and Security</h2>
+            <div class="success-box">
+                <h3>Security</h3>
+                <ul>
+                    <li><strong>Encryption</strong>: All data is encrypted in transit and at rest</li>
+                    <li><strong>Secure infrastructure</strong>: Hosted on Supabase with SOC 2 certification</li>
+                    <li><strong>Limited access</strong>: Only essential services have access to your data</li>
+                    <li><strong>Secure authentication</strong>: OAuth with Google and Facebook</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>❌ What We NEVER Share</h3>
+                <ul>
+                    <li>Exact address or precise GPS coordinates</li>
+                    <li>Personal data with advertisers</li>
+                    <li>Private messages with third parties</li>
+                    <li>Complete identification information</li>
+                </ul>
+            </div>
+
+            <div class="contact-card">
+                <h3>📞 Contact and Questions</h3>
+                <p>For any questions regarding this privacy policy:</p>
+                <p><strong>Email:</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Developer:</strong> mcsEdition</p>
+                <p><strong>Location:</strong> Montreal, QC, Canada</p>
+            </div>
+        </div>
+
+        <div id="terms-en" class="content-section">
+            <h1>📋 Terms of Service - Vibe</h1>
+            <p><strong>Last updated:</strong> January 2025</p>
+
+            <div class="highlight-box">
+                <h3>🎯 Target Audience</h3>
+                <p>The App is intended for users aged <strong>18 and older</strong>. Use by minors is strictly prohibited.</p>
+            </div>
+
+            <h2>✅ Acceptable Behaviors</h2>
+            <div class="success-box">
+                <ul>
+                    <li><strong>Mutual respect</strong> towards all users</li>
+                    <li><strong>Authentic information</strong> in your profile</li>
+                    <li><strong>Kind communication</strong> in messages</li>
+                    <li><strong>Respect for privacy</strong> of other users</li>
+                </ul>
+            </div>
+
+            <h2>❌ Prohibited Behaviors</h2>
+            <div class="warning-box">
+                <ul>
+                    <li>Harassment, intimidation, or threats towards other users</li>
+                    <li>Explicit sexual content or inappropriate material</li>
+                    <li>Discrimination based on race, religion, gender, sexual orientation</li>
+                    <li>Spam or unauthorized commercial solicitation</li>
+                    <li>Identity impersonation or false information</li>
+                    <li>Sharing personal information of other users without consent</li>
+                </ul>
+            </div>
+
+            <h2>🛡️ Security and Recommendations</h2>
+            <div class="feature-box">
+                <h3>Safety Recommendations</h3>
+                <ul>
+                    <li>Meet in public places</li>
+                    <li>Inform someone of your meeting plans</li>
+                    <li>Trust your instincts</li>
+                    <li>Report any suspicious behavior</li>
+                </ul>
+            </div>
+
+            <div class="contact-card">
+                <h3>📞 Contact</h3>
+                <p>For any questions regarding these Terms of Service:</p>
+                <p><strong>Email:</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Developer:</strong> mcsEdition</p>
+                <p><strong>Location:</strong> Montreal, QC, Canada</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 mcsEdition - Vibe App</p>
+            <p>Cette page est disponible en français et en anglais pour servir notre communauté internationale de voyageurs.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLanguage = 'fr';
+        let currentTab = 'privacy';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language buttons
+            document.getElementById('lang-fr').classList.toggle('inactive', lang !== 'fr');
+            document.getElementById('lang-en').classList.toggle('inactive', lang !== 'en');
+            
+            // Update tab labels
+            const tabButtons = document.querySelectorAll('.tab-button');
+            if (lang === 'fr') {
+                tabButtons[0].innerHTML = '<span class="emoji">🔒</span>Politique de Confidentialité';
+                tabButtons[1].innerHTML = '<span class="emoji">📋</span>Conditions d\'Utilisation';
+            } else {
+                tabButtons[0].innerHTML = '<span class="emoji">🔒</span>Privacy Policy';
+                tabButtons[1].innerHTML = '<span class="emoji">📋</span>Terms of Service';
+            }
+            
+            // Show current content
+            showContent();
+        }
+
+        function showTab(tab) {
+            currentTab = tab;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show current content
+            showContent();
+        }
+
+        function showContent() {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show current section
+            const sectionId = `${currentTab}-${currentLanguage}`;
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+            }
+        }
+
+        // Initialize
+        showContent();
+    </script>
+</body>
+</html>
