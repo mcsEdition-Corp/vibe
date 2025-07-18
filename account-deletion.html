@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe - Comment Supprimer Votre Compte</title>
+    <style>
+        /* Variables CSS basées sur votre design system */
+        :root {
+            --primary: #FF7A59;
+            --secondary: #A8D8B9;
+            --accent: #F6E05E;
+            --background: #FAF7F0;
+            --surface: #FFFFFF;
+            --text-primary: #374151;
+            --text-secondary: #9CA3AF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --info: #3B82F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--error), var(--warning));
+            color: white;
+            margin: -20px -20px 40px -20px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .language-toggle {
+            text-align: center;
+            margin-bottom: 30px;
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-toggle button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 0 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+        }
+
+        .language-toggle button.inactive {
+            background: var(--text-secondary);
+        }
+
+        .content-section {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            border-bottom: 3px solid var(--error);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 25px;
+            color: var(--error);
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .step-card {
+            background: var(--surface);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .step-card h3 {
+            margin-top: 10px;
+            color: var(--primary);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+            border: 2px solid var(--error);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .warning-box::before {
+            content: "⚠️";
+            font-size: 24px;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        .warning-box h3 {
+            margin-left: 40px;
+            color: var(--error);
+            font-size: 1.3rem;
+        }
+
+        .warning-box p, .warning-box ul {
+            margin-left: 40px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 216, 185, 0.1));
+            border: 2px solid var(--info);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: "💡";
+            font-size: 24px;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        .info-box h3 {
+            margin-left: 40px;
+            color: var(--info);
+        }
+
+        .info-box p, .info-box ul {
+            margin-left: 40px;
+        }
+
+        .deletion-list {
+            background: rgba(239, 68, 68, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .deletion-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--surface);
+            border-radius: 8px;
+            border-left: 4px solid var(--error);
+        }
+
+        .deletion-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .deletion-content h4 {
+            color: var(--error);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .deletion-content p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .alternative-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(168, 216, 185, 0.1));
+            border: 2px solid var(--success);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .alternative-box::before {
+            content: "🛠️";
+            font-size: 24px;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        .alternative-box h3 {
+            margin-left: 40px;
+            color: var(--success);
+        }
+
+        .alternative-box p, .alternative-box ul {
+            margin-left: 40px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--text-primary);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(151, 151, 151, 0.2);
+            margin-top: 40px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .language-toggle button {
+                display: block;
+                margin: 5px auto;
+                width: 200px;
+            }
+
+            .step-card {
+                padding: 15px;
+            }
+
+            .warning-box, .info-box, .alternative-box {
+                padding: 20px;
+            }
+
+            .warning-box h3, .info-box h3, .alternative-box h3 {
+                margin-left: 35px;
+                font-size: 1.1rem;
+            }
+
+            .warning-box p, .warning-box ul,
+            .info-box p, .info-box ul,
+            .alternative-box p, .alternative-box ul {
+                margin-left: 35px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗑️ Suppression de Compte</h1>
+            <p>Guide complet pour supprimer définitivement votre compte Vibe</p>
+        </div>
+
+        <a href="#" class="back-link">← Retour aux Conditions</a>
+
+        <div class="language-toggle">
+            <button onclick="setLanguage('fr')" id="lang-fr">🇫🇷 Français</button>
+            <button onclick="setLanguage('en')" id="lang-en" class="inactive">🇬🇧 English</button>
+        </div>
+
+        <!-- Section Française -->
+        <div id="content-fr" class="content-section active">
+            <h1>🗑️ Comment Supprimer Votre Compte Vibe</h1>
+
+            <div class="warning-box">
+                <h3>Action Irréversible</h3>
+                <p>La suppression de votre compte Vibe est <strong>définitive et irréversible</strong>. Une fois supprimé, votre compte et toutes vos données ne pourront pas être récupérés.</p>
+            </div>
+
+            <h2>📱 Étapes pour Supprimer Votre Compte</h2>
+
+            <div class="step-card" data-step="1">
+                <h3>Ouvrir les Paramètres</h3>
+                <p>Dans l'application Vibe, appuyez sur votre photo de profil en bas à droite, puis sélectionnez <strong>"Paramètres"</strong> dans le menu.</p>
+            </div>
+
+            <div class="step-card" data-step="2">
+                <h3>Accéder aux Paramètres du Compte</h3>
+                <p>Dans la section Paramètres, faites défiler vers le bas et appuyez sur <strong>"Compte et Confidentialité"</strong>.</p>
+            </div>
+
+            <div class="step-card" data-step="3">
+                <h3>Sélectionner "Supprimer le Compte"</h3>
+                <p>En bas de la page, vous trouverez l'option <strong>"Supprimer définitivement mon compte"</strong> en rouge. Appuyez dessus.</p>
+            </div>
+
+            <div class="step-card" data-step="4">
+                <h3>Lire les Avertissements</h3>
+                <p>L'application vous présentera une page détaillant tout ce qui sera supprimé. Lisez attentivement ces informations.</p>
+            </div>
+
+            <div class="step-card" data-step="5">
+                <h3>Confirmer la Suppression</h3>
+                <p>Tapez exactement <strong>"SUPPRIMER MON COMPTE"</strong> dans le champ de confirmation, puis appuyez sur le bouton rouge de suppression définitive.</p>
+            </div>
+
+            <div class="step-card" data-step="6">
+                <h3>Suppression Automatique</h3>
+                <p>Votre compte sera supprimé immédiatement et vous serez déconnecté. Le processus de suppression des données prend jusqu'à 30 jours maximum.</p>
+            </div>
+
+            <h2>🗂️ Données Supprimées Définitivement</h2>
+            <p>Voici tout ce qui sera supprimé de manière permanente :</p>
+
+            <div class="deletion-list">
+                <div class="deletion-item">
+                    <div class="deletion-icon">👤</div>
+                    <div class="deletion-content">
+                        <h4>Votre Profil Complet</h4>
+                        <p>Nom, photo de profil, informations personnelles, préférences de voyage, traits de personnalité</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">✈️</div>
+                    <div class="deletion-content">
+                        <h4>Tous Vos Voyages</h4>
+                        <p>Voyages créés, destinations, itinéraires, photos de voyage, informations de localisation</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">💬</div>
+                    <div class="deletion-content">
+                        <h4>Toutes Vos Conversations</h4>
+                        <p>Messages envoyés et reçus, historique de discussions, conversations de groupe</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">👥</div>
+                    <div class="deletion-content">
+                        <h4>Vos Connexions</h4>
+                        <p>Demandes de contact envoyées et reçues, liste de contacts, interactions sociales</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">📸</div>
+                    <div class="deletion-content">
+                        <h4>Tous Vos Médias</h4>
+                        <p>Photos de profil, images partagées, fichiers uploadés dans les conversations</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">🔐</div>
+                    <div class="deletion-content">
+                        <h4>Authentification</h4>
+                        <p>Compte de connexion Google/Facebook, session active, tokens d'accès</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alternative-box">
+                <h3>Alternatives à la Suppression</h3>
+                <p>Avant de supprimer définitivement votre compte, considérez ces options :</p>
+                <ul>
+                    <li><strong>Suspension temporaire</strong> : Rendez votre profil invisible sans perdre vos données</li>
+                    <li><strong>Paramètres de confidentialité</strong> : Limitez qui peut vous voir et vous contacter</li>
+                    <li><strong>Blocage d'utilisateurs</strong> : Bloquez les personnes problématiques individuellement</li>
+                    <li><strong>Désactivation des notifications</strong> : Réduisez les interactions sans supprimer le compte</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>Délai de Suppression</h3>
+                <p>Une fois la suppression confirmée :</p>
+                <ul>
+                    <li><strong>Immédiat</strong> : Déconnexion automatique et profil invisible</li>
+                    <li><strong>24-48h</strong> : Suppression des données de profil et conversations</li>
+                    <li><strong>7 jours</strong> : Suppression complète des médias et fichiers</li>
+                    <li><strong>30 jours max</strong> : Suppression totale de toutes les données</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>Important à Savoir</h3>
+                <ul>
+                    <li>Aucune récupération possible après confirmation</li>
+                    <li>Les autres utilisateurs ne pourront plus vous contacter</li>
+                    <li>Vos messages dans les conversations disparaîtront</li>
+                    <li>Vous devrez créer un nouveau compte pour revenir</li>
+                    <li>Vos voyages ne seront plus visibles sur la carte</li>
+                </ul>
+            </div>
+
+            <h2>🆘 Besoin d'Aide ?</h2>
+            <p>Si vous rencontrez des difficultés ou avez des questions :</p>
+
+            <div class="contact-card">
+                <h3>📞 Support Vibe</h3>
+                <p>Notre équipe est là pour vous aider</p>
+                <p><strong>Email :</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Réponse sous :</strong> 24-48 heures</p>
+                <p><strong>Développeur :</strong> mcsEdition - Montréal, QC</p>
+            </div>
+        </div>
+
+        <!-- Section Anglaise -->
+        <div id="content-en" class="content-section">
+            <h1>🗑️ How to Delete Your Vibe Account</h1>
+
+            <div class="warning-box">
+                <h3>Irreversible Action</h3>
+                <p>Deleting your Vibe account is <strong>permanent and irreversible</strong>. Once deleted, your account and all your data cannot be recovered.</p>
+            </div>
+
+            <h2>📱 Steps to Delete Your Account</h2>
+
+            <div class="step-card" data-step="1">
+                <h3>Open Settings</h3>
+                <p>In the Vibe app, tap your profile picture at the bottom right, then select <strong>"Settings"</strong> from the menu.</p>
+            </div>
+
+            <div class="step-card" data-step="2">
+                <h3>Access Account Settings</h3>
+                <p>In the Settings section, scroll down and tap <strong>"Account & Privacy"</strong>.</p>
+            </div>
+
+            <div class="step-card" data-step="3">
+                <h3>Select "Delete Account"</h3>
+                <p>At the bottom of the page, you'll find the option <strong>"Delete my account permanently"</strong> in red. Tap on it.</p>
+            </div>
+
+            <div class="step-card" data-step="4">
+                <h3>Read the Warnings</h3>
+                <p>The app will present you with a page detailing everything that will be deleted. Read this information carefully.</p>
+            </div>
+
+            <div class="step-card" data-step="5">
+                <h3>Confirm Deletion</h3>
+                <p>Type exactly <strong>"DELETE MY ACCOUNT"</strong> in the confirmation field, then tap the red permanent deletion button.</p>
+            </div>
+
+            <div class="step-card" data-step="6">
+                <h3>Automatic Deletion</h3>
+                <p>Your account will be deleted immediately and you will be logged out. The data deletion process takes up to 30 days maximum.</p>
+            </div>
+
+            <h2>🗂️ Data Permanently Deleted</h2>
+            <p>Here's everything that will be permanently deleted:</p>
+
+            <div class="deletion-list">
+                <div class="deletion-item">
+                    <div class="deletion-icon">👤</div>
+                    <div class="deletion-content">
+                        <h4>Your Complete Profile</h4>
+                        <p>Name, profile photo, personal information, travel preferences, personality traits</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">✈️</div>
+                    <div class="deletion-content">
+                        <h4>All Your Trips</h4>
+                        <p>Created trips, destinations, itineraries, travel photos, location information</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">💬</div>
+                    <div class="deletion-content">
+                        <h4>All Your Conversations</h4>
+                        <p>Messages sent and received, discussion history, group conversations</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">👥</div>
+                    <div class="deletion-content">
+                        <h4>Your Connections</h4>
+                        <p>Contact requests sent and received, contact list, social interactions</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">📸</div>
+                    <div class="deletion-content">
+                        <h4>All Your Media</h4>
+                        <p>Profile photos, shared images, files uploaded in conversations</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">🔐</div>
+                    <div class="deletion-content">
+                        <h4>Authentication</h4>
+                        <p>Google/Facebook login account, active session, access tokens</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alternative-box">
+                <h3>Alternatives to Deletion</h3>
+                <p>Before permanently deleting your account, consider these options:</p>
+                <ul>
+                    <li><strong>Temporary suspension</strong>: Make your profile invisible without losing your data</li>
+                    <li><strong>Privacy settings</strong>: Limit who can see and contact you</li>
+                    <li><strong>Block users</strong>: Block problematic individuals</li>
+                    <li><strong>Disable notifications</strong>: Reduce interactions without deleting the account</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>Deletion Timeline</h3>
+                <p>Once deletion is confirmed:</p>
+                <ul>
+                    <li><strong>Immediate</strong>: Automatic logout and profile becomes invisible</li>
+                    <li><strong>24-48h</strong>: Profile data and conversations deleted</li>
+                    <li><strong>7 days</strong>: Complete deletion of media and files</li>
+                    <li><strong>30 days max</strong>: Total deletion of all data</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <h3>Important to Know</h3>
+                <ul>
+                    <li>No recovery possible after confirmation</li>
+                    <li>Other users will no longer be able to contact you</li>
+                    <li>Your messages in conversations will disappear</li>
+                    <li>You'll need to create a new account to return</li>
+                    <li>Your trips will no longer be visible on the map</li>
+                </ul>
+            </div>
+
+            <h2>🆘 Need Help?</h2>
+            <p>If you encounter difficulties or have questions:</p>
+
+            <div class="contact-card">
+                <h3>📞 Vibe Support</h3>
+                <p>Our team is here to help you</p>
+                <p><strong>Email:</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Response within:</strong> 24-48 hours</p>
+                <p><strong>Developer:</strong> mcsEdition - Montreal, QC</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 mcsEdition - Vibe App</p>
+            <p>Cette page est disponible en français et en anglais.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentLanguage = 'fr';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update language buttons
+            document.getElementById('lang-fr').classList.toggle('inactive', lang !== 'fr');
+            document.getElementById('lang-en').classList.toggle('inactive', lang !== 'en');
+            
+            // Show/hide content sections
+            document.getElementById('content-fr').classList.toggle('active', lang === 'fr');
+            document.getElementById('content-en').classList.toggle('active', lang === 'en');
+        }
+
+        // Initialize
+        setLanguage('fr');
+    </script>
+</body>
+</html>
