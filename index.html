@@ -1161,4 +1161,37 @@
                 tabButtons[2].innerHTML = '<span class="emoji">🗑️</span>Delete my Account';
             }
             
-            // Show
+            // Show current content
+            showContent();
+        }
+
+        function showTab(tab) {
+            currentTab = tab;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show current content
+            showContent();
+        }
+
+        function showContent() {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show current section
+            const sectionId = `${currentTab}-${currentLanguage}`;
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+            }
+        }
+
+        // Initialize
+        showContent();
+    </script>
+</body>
+</html>
