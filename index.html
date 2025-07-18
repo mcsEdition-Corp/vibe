@@ -92,7 +92,7 @@
 
         .tab-navigation {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 30px;
             background: var(--surface);
             padding: 8px;
@@ -104,19 +104,32 @@
             flex: 1;
             background: transparent;
             border: none;
-            padding: 15px 20px;
+            padding: 12px 16px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--text-secondary);
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .tab-button.active {
             background: var(--primary);
             color: white;
             box-shadow: 0 2px 8px rgba(255, 122, 89, 0.3);
+        }
+
+        .tab-button.deletion {
+            background: transparent;
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+
+        .tab-button.deletion.active {
+            background: var(--error);
+            color: white;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
         }
 
         .content-section {
@@ -144,6 +157,10 @@
             margin-bottom: 25px;
         }
 
+        h1.deletion-title {
+            border-bottom-color: var(--error);
+        }
+
         h2 {
             font-size: 1.5rem;
             margin-top: 30px;
@@ -161,7 +178,7 @@
             line-height: 1.7;
         }
 
-        ul {
+        ul, ol {
             margin: 15px 0;
             padding-left: 20px;
         }
@@ -198,6 +215,14 @@
         .success-box {
             background: rgba(16, 185, 129, 0.1);
             border-left: 4px solid var(--success);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .error-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--error);
             padding: 20px;
             margin: 20px 0;
             border-radius: 0 8px 8px 0;
@@ -240,6 +265,70 @@
             margin-right: 5px;
         }
 
+        /* Styles spécifiques pour la suppression de compte */
+        .step-card {
+            background: var(--surface);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .step-card h3 {
+            margin-top: 10px;
+            color: var(--primary);
+        }
+
+        .deletion-list {
+            background: rgba(239, 68, 68, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .deletion-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: var(--surface);
+            border-radius: 8px;
+            border-left: 4px solid var(--error);
+        }
+
+        .deletion-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .deletion-content h4 {
+            color: var(--error);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .deletion-content p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .container {
@@ -256,6 +345,12 @@
 
             .tab-navigation {
                 flex-direction: column;
+                gap: 5px;
+            }
+
+            .tab-button {
+                font-size: 13px;
+                padding: 10px 12px;
             }
 
             .language-toggle button {
@@ -300,6 +395,9 @@
             </button>
             <button class="tab-button" onclick="showTab('terms')">
                 <span class="emoji">📋</span>Conditions d'Utilisation
+            </button>
+            <button class="tab-button deletion" onclick="showTab('deletion')">
+                <span class="emoji">🗑️</span>Supprimer mon Compte
             </button>
         </div>
 
@@ -427,6 +525,112 @@
             </div>
         </div>
 
+        <!-- Section Suppression de Compte FR -->
+        <div id="deletion-fr" class="content-section">
+            <h1 class="deletion-title">🗑️ Comment Supprimer Votre Compte Vibe</h1>
+
+            <div class="error-box">
+                <h3>⚠️ Action Irréversible</h3>
+                <p>La suppression de votre compte Vibe est <strong>définitive et irréversible</strong>. Une fois supprimé, votre compte et toutes vos données ne pourront pas être récupérés.</p>
+            </div>
+
+            <h2>📱 Étapes pour Supprimer Votre Compte</h2>
+
+            <div class="step-card" data-step="1">
+                <h3>Ouvrir les Paramètres</h3>
+                <p>Dans l'application Vibe, appuyez sur votre photo de profil en bas à droite, puis sélectionnez <strong>"Paramètres"</strong> dans le menu.</p>
+            </div>
+
+            <div class="step-card" data-step="2">
+                <h3>Accéder aux Paramètres du Compte</h3>
+                <p>Dans la section Paramètres, faites défiler vers le bas et appuyez sur <strong>"Compte et Confidentialité"</strong>.</p>
+            </div>
+
+            <div class="step-card" data-step="3">
+                <h3>Sélectionner "Supprimer le Compte"</h3>
+                <p>En bas de la page, vous trouverez l'option <strong>"Supprimer définitivement mon compte"</strong> en rouge. Appuyez dessus.</p>
+            </div>
+
+            <div class="step-card" data-step="4">
+                <h3>Lire les Avertissements</h3>
+                <p>L'application vous présentera une page détaillant tout ce qui sera supprimé. Lisez attentivement ces informations.</p>
+            </div>
+
+            <div class="step-card" data-step="5">
+                <h3>Confirmer la Suppression</h3>
+                <p>Tapez exactement <strong>"SUPPRIMER MON COMPTE"</strong> dans le champ de confirmation, puis appuyez sur le bouton rouge de suppression définitive.</p>
+            </div>
+
+            <div class="step-card" data-step="6">
+                <h3>Suppression Automatique</h3>
+                <p>Votre compte sera supprimé immédiatement et vous serez déconnecté. Le processus de suppression des données prend jusqu'à 30 jours maximum.</p>
+            </div>
+
+            <h2>🗂️ Données Supprimées Définitivement</h2>
+            <p>Voici tout ce qui sera supprimé de manière permanente :</p>
+
+            <div class="deletion-list">
+                <div class="deletion-item">
+                    <div class="deletion-icon">👤</div>
+                    <div class="deletion-content">
+                        <h4>Votre Profil Complet</h4>
+                        <p>Nom, photo de profil, informations personnelles, préférences de voyage, traits de personnalité</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">✈️</div>
+                    <div class="deletion-content">
+                        <h4>Tous Vos Voyages</h4>
+                        <p>Voyages créés, destinations, itinéraires, photos de voyage, informations de localisation</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">💬</div>
+                    <div class="deletion-content">
+                        <h4>Toutes Vos Conversations</h4>
+                        <p>Messages envoyés et reçus, historique de discussions, conversations de groupe</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">👥</div>
+                    <div class="deletion-content">
+                        <h4>Vos Connexions</h4>
+                        <p>Demandes de contact envoyées et reçues, liste de contacts, interactions sociales</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">📸</div>
+                    <div class="deletion-content">
+                        <h4>Tous Vos Médias</h4>
+                        <p>Photos de profil, images partagées, fichiers uploadés dans les conversations</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <h3>🛠️ Alternatives à la Suppression</h3>
+                <p>Avant de supprimer définitivement votre compte, considérez ces options :</p>
+                <ul>
+                    <li><strong>Suspension temporaire</strong> : Rendez votre profil invisible sans perdre vos données</li>
+                    <li><strong>Paramètres de confidentialité</strong> : Limitez qui peut vous voir et vous contacter</li>
+                    <li><strong>Blocage d'utilisateurs</strong> : Bloquez les personnes problématiques individuellement</li>
+                    <li><strong>Désactivation des notifications</strong> : Réduisez les interactions sans supprimer le compte</li>
+                </ul>
+            </div>
+
+            <div class="contact-card">
+                <h3>🆘 Besoin d'Aide ?</h3>
+                <p>Notre équipe est là pour vous aider</p>
+                <p><strong>Email :</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Réponse sous :</strong> 24-48 heures</p>
+                <p><strong>Développeur :</strong> mcsEdition - Montréal, QC</p>
+            </div>
+        </div>
+
         <!-- Sections EN (English) -->
         <div id="privacy-en" class="content-section">
             <h1>🔒 Privacy Policy - Vibe</h1>
@@ -539,6 +743,112 @@
             </div>
         </div>
 
+        <!-- Section Suppression de Compte EN -->
+        <div id="deletion-en" class="content-section">
+            <h1 class="deletion-title">🗑️ How to Delete Your Vibe Account</h1>
+
+            <div class="error-box">
+                <h3>⚠️ Irreversible Action</h3>
+                <p>Deleting your Vibe account is <strong>permanent and irreversible</strong>. Once deleted, your account and all your data cannot be recovered.</p>
+            </div>
+
+            <h2>📱 Steps to Delete Your Account</h2>
+
+            <div class="step-card" data-step="1">
+                <h3>Open Settings</h3>
+                <p>In the Vibe app, tap your profile picture at the bottom right, then select <strong>"Settings"</strong> from the menu.</p>
+            </div>
+
+            <div class="step-card" data-step="2">
+                <h3>Access Account Settings</h3>
+                <p>In the Settings section, scroll down and tap <strong>"Account & Privacy"</strong>.</p>
+            </div>
+
+            <div class="step-card" data-step="3">
+                <h3>Select "Delete Account"</h3>
+                <p>At the bottom of the page, you'll find the option <strong>"Delete my account permanently"</strong> in red. Tap on it.</p>
+            </div>
+
+            <div class="step-card" data-step="4">
+                <h3>Read the Warnings</h3>
+                <p>The app will present you with a page detailing everything that will be deleted. Read this information carefully.</p>
+            </div>
+
+            <div class="step-card" data-step="5">
+                <h3>Confirm Deletion</h3>
+                <p>Type exactly <strong>"DELETE MY ACCOUNT"</strong> in the confirmation field, then tap the red permanent deletion button.</p>
+            </div>
+
+            <div class="step-card" data-step="6">
+                <h3>Automatic Deletion</h3>
+                <p>Your account will be deleted immediately and you will be logged out. The data deletion process takes up to 30 days maximum.</p>
+            </div>
+
+            <h2>🗂️ Data Permanently Deleted</h2>
+            <p>Here's everything that will be permanently deleted:</p>
+
+            <div class="deletion-list">
+                <div class="deletion-item">
+                    <div class="deletion-icon">👤</div>
+                    <div class="deletion-content">
+                        <h4>Your Complete Profile</h4>
+                        <p>Name, profile photo, personal information, travel preferences, personality traits</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">✈️</div>
+                    <div class="deletion-content">
+                        <h4>All Your Trips</h4>
+                        <p>Created trips, destinations, itineraries, travel photos, location information</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">💬</div>
+                    <div class="deletion-content">
+                        <h4>All Your Conversations</h4>
+                        <p>Messages sent and received, discussion history, group conversations</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">👥</div>
+                    <div class="deletion-content">
+                        <h4>Your Connections</h4>
+                        <p>Contact requests sent and received, contact list, social interactions</p>
+                    </div>
+                </div>
+
+                <div class="deletion-item">
+                    <div class="deletion-icon">📸</div>
+                    <div class="deletion-content">
+                        <h4>All Your Media</h4>
+                        <p>Profile photos, shared images, files uploaded in conversations</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <h3>🛠️ Alternatives to Deletion</h3>
+                <p>Before permanently deleting your account, consider these options:</p>
+                <ul>
+                    <li><strong>Temporary suspension</strong>: Make your profile invisible without losing your data</li>
+                    <li><strong>Privacy settings</strong>: Limit who can see and contact you</li>
+                    <li><strong>Block users</strong>: Block problematic individuals</li>
+                    <li><strong>Disable notifications</strong>: Reduce interactions without deleting the account</li>
+                </ul>
+            </div>
+
+            <div class="contact-card">
+                <h3>🆘 Need Help?</h3>
+                <p>Our team is here to help you</p>
+                <p><strong>Email:</strong> <a href="mailto:mcsedition@gmail.com">mcsedition@gmail.com</a></p>
+                <p><strong>Response within:</strong> 24-48 hours</p>
+                <p><strong>Developer:</strong> mcsEdition - Montreal, QC</p>
+            </div>
+        </div>
+
         <div class="footer">
             <p>© 2025 mcsEdition - Vibe App</p>
             <p>Cette page est disponible en français et en anglais pour servir notre communauté internationale de voyageurs.</p>
@@ -561,9 +871,11 @@
             if (lang === 'fr') {
                 tabButtons[0].innerHTML = '<span class="emoji">🔒</span>Politique de Confidentialité';
                 tabButtons[1].innerHTML = '<span class="emoji">📋</span>Conditions d\'Utilisation';
+                tabButtons[2].innerHTML = '<span class="emoji">🗑️</span>Supprimer mon Compte';
             } else {
                 tabButtons[0].innerHTML = '<span class="emoji">🔒</span>Privacy Policy';
                 tabButtons[1].innerHTML = '<span class="emoji">📋</span>Terms of Service';
+                tabButtons[2].innerHTML = '<span class="emoji">🗑️</span>Delete my Account';
             }
             
             // Show current content
