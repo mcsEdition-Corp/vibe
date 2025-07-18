@@ -37,7 +37,6 @@ Vibe est une application mobile développée par **mcsEdition** qui connecte les
 ### 💬 Données d'utilisation
 - **Messages** que vous envoyez et recevez dans l'application
 - **Demandes de connexion** que vous envoyez ou recevez
-- **Préférences de notifications**
 - **Données d'utilisation** pour améliorer l'application
 
 ## Comment nous utilisons vos informations
@@ -98,9 +97,6 @@ Vibe est une application mobile développée par **mcsEdition** qui connecte les
 ## Vos droits et contrôles
 
 ### 🛠️ Contrôle de confidentialité
-- **Visibilité du profil** : Choisissez qui peut voir votre profil
-- **Paramètres de localisation** : Contrôlez l'affichage de votre position
-- **Notifications** : Personnalisez ou désactivez les alertes
 - **Blocage d'utilisateurs** : Bloquez les personnes indésirables
 
 ### 📋 Vos droits RGPD
