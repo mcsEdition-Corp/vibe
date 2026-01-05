@@ -15,7 +15,7 @@
 En téléchargeant, installant ou utilisant l'application Vibe ("l'Application"), vous acceptez d'être lié par ces Conditions d'Utilisation ("Conditions"). Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'Application.
 
 **Développeur :** mcsEdition  
-**Contact :** mcsedition@gmail.com  
+**Contact :** contact@mcsedition.org  
 **Localisation :** Montréal, QC, Canada
 
 ## 2. Description du service
